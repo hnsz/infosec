@@ -9,7 +9,7 @@
 	blocksize: size of the blocks
 	key:	key
 	F:	round function of the encryption
-	K:	function that contains the key scheme algorithm
+	KS:	function that contains the key scheme algorithm
 	
 */
 void feistel(char *out, char *in, int blocksize, char *key, void (F)(char *, char *), void (*KS)(char *,char *))

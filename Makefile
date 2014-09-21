@@ -1,10 +1,18 @@
 CC=cc
-FLAGS= -Wall --std=c99 -pedantic
-CFLAGS= $(FLAGS) -c
+FLAGS=-Wall --std=c99 -pedantic
+CFLAGS=$(FLAGS) -c
+OBJS=feistel.o xcryptor.o
 
 
-main: main.c strxor.o
-	$(CC) $(FLAGS) main.c
+a.out: main.c $(OBJS)
+	$(CC) $(FLAGS) main.c $(OBJS) -lcrypto
 
-strxor: strxor.c strxor.h
-	$(CC) $(CFLAGS) strxor.c
+feistel.o: feistel.c feistel.h 
+	$(CC) $(CFLAGS) feistel.c
+
+xcryptor.o: xcryptor.c xcryptor.h
+	$(CC) $(CFLAGS) xcryptor.c
+
+
+clean: *.o
+	rm *.o
